@@ -12,21 +12,21 @@ export const handler: Handler = async (event, context) => {
     const movieId = parameters ? parseInt(parameters.movieId) : undefined;
 
     // If the movie Id isn't present in the URL return table
-    if (!movieId) {
-        const scanOutput = await ddbDocClient.send(
-            new ScanCommand({
-              TableName: "Movies",
-            })
-          );
+    // if (!movieId) {
+    //     const scanOutput = await ddbDocClient.send(
+    //         new ScanCommand({
+    //           TableName: "Movies",
+    //         })
+    //       );
     
-          return {
-            statusCode: 200,
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify({ data: scanOutput.Items }),
-          };
-        }
+    //       return {
+    //         statusCode: 200,
+    //         headers: {
+    //           "content-type": "application/json",
+    //         },
+    //         body: JSON.stringify({ data: scanOutput.Items }),
+    //       };
+    //     }
       
     const commandOutput = await ddbDocClient.send(
       new GetCommand({
